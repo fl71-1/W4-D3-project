@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Personal blog</div>
+            <nav class="nav">
+                <a href="login.html">Login</a>
+                <a href="login.html">Publish an article</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="intro">
+            <h1>Welcome to the blog</h1>
+            <p>Start your blogging journey now</p>
+        </section>
+
+        
+        <section class="articles" id="articles">
+            <h2>Published articles</h2>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 Personal blog. All rights reserved.</p>
+    </footer>
+
+    <script>let urlArticle = "https://66e7e6a0b17821a9d9da6efe.mockapi.io/article";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const articlesSection = document.getElementById('articles');
+            const currentUser = localStorage.getItem('enteredUsername'); 
+        
+            fetch(urlArticle, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(articles => {
+                if (articles.length === 0) {
+                    articlesSection.innerHTML += '<p>There are no articles published yet.</p>';
+                } else {
+                    articles.forEach(article => {
+                        const articleDiv = document.createElement('div');
+                        articleDiv.classList.add('article-box'); // إضافة كلاس لتنسيق البوكس
+                        
+                        articleDiv.innerHTML = `
+                            <h3>${article.title}</h3>
+                            <p>${article.content}</p>
+                            <br>
+                            <p><em>writer: ${article.author || currentUser || 'مجهول'}</em></p>
+                        `;
+                        articlesSection.appendChild(articleDiv);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+                articlesSection.innerHTML = '<p>Failed to load articles.</p>';
+            });
+        });
+        
+
+
+    </script>
+</body>
+</html>

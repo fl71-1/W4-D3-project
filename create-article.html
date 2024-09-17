@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>push</title>
+    <link rel="stylesheet" href="create-article.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="navall">
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i></a>
+    </div>
+       
+    <div class="section-3">
+    <h1>Publish a new article</h1>
+    <form id="article-form">
+        <input type="text" id="article-title" placeholder="Article title" required>
+        <textarea id="article-content" placeholder="Article content" required></textarea>
+        <button type="submit">to publish</button>
+    </form>
+</div>
+    <script>
+    let urlArticle = "https://66e7e6a0b17821a9d9da6efe.mockapi.io/article";
+document.getElementById('article-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('article-title').value;
+    const content = document.getElementById('article-content').value;
+
+    fetch(urlArticle, {
+        method: 'POST',  
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: title, 
+            content: content
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);  
+
+        alert('The article has been published successfully!');
+        window.location.href = 'profil.html';  
+    })
+    .catch(error => {
+        alert("Failed: Could not publish the article.");
+        console.error('Error:', error);
+    });
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body> 
+      
+    <a href="index.html">
+    <i class="fa-solid fa-house"></i></a>
+    <button id="logout">log out</button>
+    <div class="section-2">
+    <p id="user-info">welcome <span id="username"></span></p>
+    <a class="create" href="create-article.html"> new article</a>
+    <h2>My article</h2>
+    <div id="articles-list">
+    </div>
+   
+</div>
+    <script>let urlArticle = "https://66e7e6a0b17821a9d9da6efe.mockapi.io/article";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const articlesList = document.getElementById('articles-list');
+        
+            fetch(urlArticle, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(articles => {
+                if (articles.length === 0) {
+                    articlesList.innerHTML = '<p>There are no articles yet.</p>';
+                } else {
+                    articles.forEach(article => {
+                        const articleDiv = document.createElement('div');
+                        articleDiv.innerHTML = `
+                            <h3>${article.title}</h3>
+                            <p>${article.content}</p>
+                            <button class="delete-article" data-id="${article.id}">Delete</button>
+                        `;
+                        articlesList.appendChild(articleDiv);
+                    });
+        
+                    document.querySelectorAll('.delete-article').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const articleId = this.getAttribute('data-id');
+        
+                            fetch(`${urlArticle}/${articleId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    alert('Article deleted successfully');
+                                    location.reload(); 
+                                } else {
+                                    alert('Failed to delete article');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('Error occurred while deleting the article');
+                            });
+                        });
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching articles:', error);
+                articlesList.innerHTML = '<p>Failed to load articles.</p>';
+            });
+        });
+        
+    </script>
+</body>
+</html>
