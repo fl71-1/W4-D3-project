@@ -126,7 +126,7 @@ html, body {
 @media only screen and (max-width: 768px) {
     #articles {
         flex-direction: column; 
-        margin-top: 3vh;  
+        margin-top: 1vh;  
         width: 80%;            
     }
 
