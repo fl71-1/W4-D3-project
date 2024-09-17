@@ -73,18 +73,22 @@ font-size: 2rem;
     body{
         display: flex;
        flex-direction: column;
-        width: 50%;
+        width: 90%;
         
     }
     
     
     button{
-      width: 15vw;
+      width: 20vw;
       height: 7vh;
      }
      form{
-        width: 50%;
+        width: 10%;
+        
      }
+    .section-1 h1{
+        font-size: 7vh;
+    }
      input{
         width: 30vw;
         font-size: 3vw;
