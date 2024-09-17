@@ -52,13 +52,13 @@
                 } else {
                     articles.forEach(article => {
                         const articleDiv = document.createElement('div');
-                        articleDiv.classList.add('article-box'); // إضافة كلاس لتنسيق البوكس
+                        articleDiv.classList.add('article-box'); 
                         
                         articleDiv.innerHTML = `
                             <h3>${article.title}</h3>
                             <p>${article.content}</p>
                             <br>
-                            <p><em>writer: ${article.author || currentUser || 'مجهول'}</em></p>
+                            <p><em>writer: ${article.author || currentUser || ''}</em></p>
                         `;
                         articlesSection.appendChild(articleDiv);
                     });
