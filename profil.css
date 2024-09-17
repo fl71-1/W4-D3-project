@@ -109,17 +109,17 @@ h1 {
  
  body{
 
-    width: 50%;
+    width: 100%;
     margin-top: 2vh;
  }
  .section-2{
-    margin-top: 50%;
+    margin-top: 15%;
  }
  #articles-list{
-    height: 100%;
+    height: 180vh;
  }
  #logout, .delete-article{
-    width: 14vw;
+    width: 12vw;
     height: 5vh;
  }
 }
