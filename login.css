@@ -70,15 +70,23 @@ font-size: 2rem;
 }
 
 @media only screen and (max-width: 768px) {
+    body{
+        display: flex;
+       flex-direction: column;
+        width: 100%;
+        
+    }
+    
+    
     button{
-      width: 12vw;
+      width: 15vw;
       height: 7vh;
      }
      form{
-        width: 30%;
+        width: 50%;
      }
      input{
         width: 30vw;
      }
    
-}
+    }
