@@ -106,11 +106,20 @@ h1 {
 }
 
 @media only screen and (max-width: 768px) {
-    #articles-list {
-        max-width: 90vw;
-    }
-    
-    a, .delete-article, #logout {
-        width: 50vw; 
-    }
+ 
+ body{
+
+    width: 100%;
+    margin-top: 2vh;
+ }
+ .section-2{
+    margin-top: 50%;
+ }
+ #articles-list{
+    height: 180vh;
+ }
+ #logout, .delete-article{
+    width: 12vw;
+    height: 5vh;
+ }
 }

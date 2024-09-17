@@ -123,3 +123,15 @@ html, body {
     font-size: 14px;
     line-height: 1.6;
 }
+@media only screen and (max-width: 768px) {
+    #articles {
+        flex-direction: column; 
+        margin-top: 3vh;  
+        width: 80%;            
+    }
+
+    .article-box {
+        width: 95%;  
+        margin: 1vh;            
+    }
+}

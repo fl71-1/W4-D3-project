@@ -61,8 +61,8 @@ button{
 background-color: #ff5722;
 color: rgb(255, 255, 255);
 font-size: 2rem;
-   width: 7.5vw;
-   height: 4.5vh;
+   width: 8vw;
+   height: 5vh;
    border-radius: 2vh;
    border: none;
    margin-top: 8vh;
@@ -71,12 +71,14 @@ font-size: 2rem;
 
 @media only screen and (max-width: 768px) {
     button{
-        width: 8vw;
-        height: 3vh;
-        margin-top: 20vh;
-       
+      width: 11vw;
+      height: 7vh;
      }
      form{
-        width: 70%;
+        width: 40%;
      }
+     input{
+        width: 50vw;
+     }
+   
 }
