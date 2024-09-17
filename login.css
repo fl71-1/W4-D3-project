@@ -83,7 +83,7 @@ font-size: 2rem;
       height: 7vh;
      }
      form{
-        width: 40%;
+        width: 50%;
         
      }
     .section-1 h1{
@@ -92,6 +92,9 @@ font-size: 2rem;
      input{
         width: 30vw;
         font-size: 3vw;
+     }
+     a{
+        font-size: 2vh;
      }
    
     }
